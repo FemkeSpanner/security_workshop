@@ -1,0 +1,27 @@
+﻿@using Newtonsoft.Json
+@model dynamic
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@if (ViewData["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewData["Error"]
+    </div>
+}
+else
+{
+    <h2>Countries Data (Logged to Console)</h2>
+    <script>
+        console.log("Countries data:");
+        var countries = @Html.Raw(JsonConvert.SerializeObject(Model));
+        console.log(countries);
+    </script>
+}
